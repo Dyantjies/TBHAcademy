@@ -30,23 +30,8 @@
     </style>
 </header>
 
-<hr class="border-2  pt-0 border-light " style="width:100%"/> 
-      
-  <div class="carousel-inner" style="width:100%; height:25%">
-    <div class="carousel-item active "style="width:100% !important; height:25% !important; background-size:cover">
-        <div class="w3-display-container w3-text-blue">
-             
-      <img class="d-block w-100" src="~/css/Admin/Admin_3.png" alt="First slide" />
-                <div class="carousel-caption d-none d-md-block">
-                     <h1  class="text-primary text-center "style="font-weight:900">Welcome Back</h1>
-        <h2 class="text-primary text-center "style="font-weight:900">Ms Shoba</h2>
-      
-         </div>
-       </div>
-      </div>
-    </div>
 
-<hr class="border-3  pt-0" style="width:100%" /> 
+@*<hr class="border-3  pt-0" style="width:100%" /> *@
 
 <div class="w-100 mb-2  " style="background: rgba(6, 73, 181,0.5)">
     <div class="pt-1 m-0 row">
@@ -151,3 +136,47 @@
  </div>
 </div>
 </div>
+<div class="container-fluid pt-4 px-4">
+    <div class="AssessmentTable text-center rounded p-4" id="AssessmentTable">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">User Information Report</h6>
+            <a href="@Url.Action("Users_Info_Report","Reports")" class="button">Generate Report</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+
+                <thead>
+                    <tr>
+                        <th>First Name </th>
+                        <th>Last Name </th>
+                        <th>Email</th>
+                       
+                    </tr>
+                </thead>
+                
+                <tbody>
+
+                    @foreach (TBHAcademyUser U in ViewBag.Users)
+                    {
+
+                        <tr>
+                            <td>@U.FirstName</td>
+                            <td>@U.LastName</td>
+                            <td>@U.Email</td>
+                            
+                        </tr>
+
+                    }
+                    <tr>
+                    </tr>
+
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+

@@ -162,17 +162,17 @@ namespace TBHAcademy.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Attempt(Attempt attempt)
+        public IActionResult Attempt(int QuizID)
         {
             var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //Attempt attempt = new Attempt();
+            Attempt attempt = new Attempt();
             attempt.Date = DateTime.Now.ToString("dd/MMMM/yyyy");
             attempt.time = DateTime.Now.ToString("HH:mm:ss");
-            attempt.QuizID =Convert.ToInt32(HttpContext.Session.GetInt32(SessionModule));
+            attempt.QuizID = 1;
             attempt.StudentID = user;
             _db.Attempt.Add(attempt);
-            _db.SaveChanges();
-            return View();
+            _db.SaveChanges();   
+            return RedirectToAction("Quiz","Index");
         }
         [HttpPost]
         public async Task<IActionResult> UploadToDatabase(List<IFormFile> files, string description)

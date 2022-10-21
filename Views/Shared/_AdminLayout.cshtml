@@ -126,57 +126,41 @@
             <ul class="nav-sidebar" style="color:white">
                 <li class="nav-item  ">
 
-                    <a href="#" id="Dashboard" class="button nav-link" style="color:white"><i data-feather="package" style="color:white"></i><span>Dashboard</span></a>
+                    <a href="#" id="Dashboard" class="button nav-link" style="color:white"><i data-feather="home" style="color:white"></i><span>Dashboard</span></a>
                 </li>
           
-                <li class="nav-item" style="color:white"><a href="#" id="Calender" class="button nav-link" style="color:white" class="nav-link"><i data-feather="shopping-bag" style="color:white"></i><span>Calender</span></a></li>
+                <li class="nav-item" style="color:white"><a href="#" id="Calender" class="button nav-link" style="color:white" ><i data-feather="calendar" style="color:white"></i><span>Calender</span></a></li>
                 <li class="nav-item">
                     <a href="" style="color:white" class="nav-link with-sub"><i data-feather="file-text" style="color:white"></i><span>Reports</span></a>
                     <nav class="nav-sub">
                         <a class="button" href="@Url.Action("Course_Info_Report","Reports")" style="color:white">Course Information Report</a>
-                        <@*a class="button" href="@Url.Action("Progress_Report","Reports")"  style="color:white">Progress Report</a>*@
+                     
                           <a class="button" href="@Url.Action("Academic_Info_Report","Reports")"  style="color:white">Academic Report</a>
+                          <a class="button" href="@Url.Action("Users_Info_Report","Reports")"  style="color:white">Users InformationReport</a>
                     
                     </nav>
                 </li>
-              @*  <li class="nav-item"><a href="" style="color:white" class="nav-link"><i data-feather="calendar" style="color:white"></i><span>Calendar</span></a></li>*@
-                @*<li class="nav-item"><a href="" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Progress Report</span></a></li>
-                <li class="nav-item"><a href="" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Question Forum</span></a></li*@@*>*@
-
+             
             </ul>
 
             <hr>
 
             <ul class="nav-sidebar">
                  <li class="nav-item">
-                    <a href="" id="CreateRole" class="button nav-link" style="color:white" class="nav-link with-sub"><i data-feather="package" style="color:white"></i><span>Manage Role</span></a>
-                     <nav class="nav-sub">
-                        <a class="button" href="@Url.Action("CreateRole","Administration")" class="sub-link" style="color:white">Create Roles</a>
-                    </nav>
+                    <a href="" id="CreateRole" class="button nav-link" style="color:white "><i data-feather="user-plus" style="color:white"></i><span>Manage Role</span></a>
+                   
                 </li>
                 <li class="nav-item">
-                    <a href="" style="color:white" class="nav-link with-sub"><i data-feather="users" style="color:white"></i><span>Manage Users</span></a>
-                    <nav class="nav-sub">
-                        <a class="button" href="@Url.Action("UserRoleIndex","UserRoles")" class="sub-link" style="color:white">Assign Roles</a>
-                    </nav>
-                </li>
+                    <a href="" id="UserRoleIndex"style="color:white" class="nav-link"><i data-feather="users" style="color:white"></i><span>Manage Users</span></a>
+                 
+                <li class="nav-item">
+                    <a href="" id="FAQ" style="color:white" class="nav-link"><i data-feather="edit" style="color:white"></i><span>Manage FAQ</span></a>
                 
-               @* <li class="nav-item" style="color:white"><a href="@Url.Action("Edit","Admin")" style="color:white" class="nav-link"><i data-feather="package" style="color:white"></i><span>Manage Courses</span></a>
-                </li>*@
-                <li class="nav-item">
-                    <a href="" style="color:white" class="nav-link with-sub"><i data-feather="file-text" style="color:white"></i><span>Manage FAQ</span></a>
-                    <nav class="nav-sub">
-                        <a class="button" href="@Url.Action("FAQs","Admin")" class="sub-link" style="color:white">Add FAQs</a>
-                        <a class="button" href="@Url.Action("ListFAQs","Admin")" class="sub-link" style="color:white">View FAQs</a>  
-                    </nav>
                 </li>
 
                  <li class="nav-item">
-                    <a href="" style="color:white" class="nav-link with-sub"><i data-feather="file-text" style="color:white"></i><span>Manage Course</span></a>
-                    <nav class="nav-sub">
-                        <a class="button" href="@Url.Action("Edit","Admin")" class="sub-link" style="color:white">Add Course</a>
-                        
-                    </nav>
+                    <a href="" id="Course" style="color:white" class="nav-link"><i data-feather="book-open" style="color:white"></i><span>Manage Course</span></a>
+                 
                 </li>
             </ul>
 
@@ -184,8 +168,8 @@
 
             <nav class="nav-sidebar ">
                 
-                @*<a href="@Url.Action("Enroll","Student")" style="color:white" class="nav-link"><i data-feather="settings" style="color:white"></i><span>Preferences</span></a>*@
-                <a href="" id="FAQDisplay" class="button nav-link" style="color:white" class="nav-link"><i data-feather="help-circle" style="color:white"></i><span>Help &amp; Support</span></a>
+               
+                <a href="" id="FAQDisplay" class="button nav-link" style="color:white" ><i data-feather="help-circle" style="color:white"></i><span>Help &amp; Support</span></a>
                
             </nav>
         </div><!-- sidebar-body -->
@@ -342,7 +326,7 @@
 
 <script type="text/javascript">
     $('#Calender').click(function () {
-        document.location = '@Url.Action("Calender","Admin")';
+        document.location = '@Url.Action("Index","Calendar")';
        
     });
 
@@ -371,7 +355,27 @@
     });
 
 </script>
+<script type="text/javascript">
+    $('#UserRoleIndex').click(function () {
+        document.location = '@Url.Action("UserRoleIndex","UserRoles")';
+       
+    });
 
+</script>
+<script type="text/javascript">
+    $('#FAQ').click(function () {
+        document.location = '@Url.Action("FAQs","Admin")';
+       
+    });
+
+
+</script>
+<script type="text/javascript">
+    $('#Course').click(function () {
+        document.location = '@Url.Action("Edit","Admin")';
+       
+    });
+</script>
 
  <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function (event) {

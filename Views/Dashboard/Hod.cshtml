@@ -123,78 +123,13 @@
             </div>
  </div>
  <br />
- <br />
  </div>
   <!-- ********************************************Tutors************************************************************************** -->
   
-  <div class="container-fluid pt-4 px-4">
-                <div class="AssessmentTable text-center rounded p-4" id="AssessmentTable">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Oversee Learning</h6>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">Module Code</th>
-                                    <th scope="col">Assessment</th>
-                                    <th scope="col">Mark Obtained</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Koketso Mosena</th>
-                                    <th>ONT3601</th>
-                                    <th>Test 1</th>
-                                    <th>80</th>
-                                </tr>
-                                                               
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-  </div>
-  
 
-  
-  
-  @*<form>
-      <div class="form group">
-           <label class="text-black font-weight-bold" asp-for="TutorID">List Of Tutors</label>
-           <div class="dropdown">
-               <select asp-for="TutorID" class="form-control">
-                   @foreach (TBHAcademyUser U in ViewBag.Tutors)
-                        {
-                            <option value="@U.Id">@U.FirstName @U.LastName</option>
-                        }
-                    </select>
-           </div>
-      </div>
-     
-     
-  </form>*@
 
 
   <!-- ********************************************Students************************************************************************** -->
-  @*<form>
-      <div class="form group">
-           <label class="text-black font-weight-bold" asp-for="StudentID">List Of Students</label>
-           <div class="dropdown">
-               <select asp-for="StudentID" class="form-control">
-                   @foreach (TBHAcademyUser U in ViewBag.Students)
-                        {
-                            <option value="@U.Id">@U.FirstName @U.LastName</option>
-                        }
-                    </select>
-           </div>
-      </div>
-     
-     
-  </form>*@
-
-
 
         @*<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -458,4 +393,82 @@
             </div>
             <!-- Widgets End -->
 *@
+
+</div>
+  <div class="container-fluid pt-4 px-4">
+    <div class="AssessmentTable text-center rounded p-4" id="AssessmentTable">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Oversee Learning</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+
+                <thead>
+                    <tr>
+                        <th>Student </th>
+                        <th>Module Name </th>
+                        <th>Mark obtained(%)</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Learning_Update P in ViewBag.OverseeLearning)
+                    {
+
+                        <tr>
+                            <td>@P.TBHAcademyUser.FirstName @P.TBHAcademyUser.LastName</td>
+                            <td>@P.Modules.ModuleName</td>
+                            <td>@P.Mark_Capture.Mark_Percentage</td>
+                        </tr>
+
+                    }
+                    <tr>
+                    </tr>
+
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
+<hr />
+<!----------------------------------------------------------------------Students---------------------------------------------------------------------------------->
+<div class="container-fluid pt-4 px-4">
+    <div class="AssessmentTable text-center rounded p-4" id="AssessmentTable">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Students</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+            @foreach (TBHAcademyUser U in ViewBag.Students)
+                        {
+                            <tr>
+                            <td>@U.FirstName @U.LastName</td>
+                            </tr>
+                        }
+            </table>
+        </div>
+    </div>
+</div>
+<hr />
+<!----------------------------------------------------------------------Tutors---------------------------------------------------------------------------------->
+<div class="container-fluid pt-4 px-4">
+    <div class="AssessmentTable text-center rounded p-4" id="AssessmentTable">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Tutors</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+            @foreach (TBHAcademyUser U in ViewBag.Tutors)
+                        {
+                            <tr>
+                            <td>@U.FirstName @U.LastName</td>
+                            </tr>
+                        }
+            </table>
+        </div>
+    </div>
 </div>

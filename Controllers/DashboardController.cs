@@ -49,6 +49,7 @@ namespace TBHAcademy.Controllers
         }
         public IActionResult Hod()
         {
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.Tutors = from R in _db.Roles
                              join UR in _db.UserRoles on R.Id equals UR.RoleId
                              from U in _db.Users
@@ -62,6 +63,15 @@ namespace TBHAcademy.Controllers
                              join ur in _db.UserRoles on U.Id equals ur.UserId
                              where R.Name == "Student" && U.Id == UR.UserId
                              select U;
+
+            ViewBag.OverseeLearning = (from C in _db.Course
+                                       join F in _db.Faculty on C.FacultyId equals F.FacultyId
+                                       from MC in _db.Mark_Capture
+                                       join U in _db.Users on MC.StudentID equals U.Id
+                                       from M in _db.Modules
+                                       join E in _db.Enroll on M.ModuleId equals E.ModuleID
+                                       where MC.ModuleID == M.ModuleId && MC.StudentID == E.StudentID
+                                       select new Learning_Update {TBHAcademyUser = U, Modules = M, Mark_Capture = MC }).ToList();
 
             ViewBag.Faculty = _db.Faculty.Count(x => x.FacultyId > 0);
             ViewBag.Course = _db.Course.Count(x => x.CourseId > 0);
@@ -78,6 +88,8 @@ namespace TBHAcademy.Controllers
             //ViewBag.Users = _db.Users.Count(x => x.AccessFailedCount > 0);
             ViewBag.Modules = _db.Modules.Count(x => x.ModuleId > 0);
             ViewBag.Enroll = _db.Enroll.Count(x => x.EnrolledID >= 0);
+          
+            ViewBag.Users=_db.Users;
             IEnumerable<Course> CourseList = _db.Course;
             return View(CourseList);
 

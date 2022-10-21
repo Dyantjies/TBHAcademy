@@ -9,9 +9,18 @@
         <h5 class="text-white text-center ">@ViewBag.Message</h5>
     </div>
 </div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Edit","Admin")">Back</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Courses List</li>
+  </ol>
+</nav>
     <div class="pl-3 pr-3">
+
+
         
-        <a asp-action="Edit" class="btn btn-outline-info ml-1 mb-2">Add Course</a>
+        
            
         <table id="myTable" class="table table-bordered table-hover ">
             <thead class="thead-dark">

@@ -1,0 +1,39 @@
+﻿@model TBHAcademy.Models.QuizQuestionAnswerViewModel
+<style type="text/css">
+    fieldset{
+        font-family: sans-serif;
+        border: 3px solid #1F497D;
+        background: #ddd;
+        border-radius: 4px;
+        padding: 15px;
+    }
+    fieldset legend{
+        background: #1F497D;
+        color: #fff;
+        padding: 5px 10px 10px 20px;
+        font-size: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 0 5px #ddd;
+        margin-left: 1px;
+        margin-right: 10px;
+    }
+</style>
+@Html.HiddenFor(expression:model => model.QuestionID)
+<fieldset>
+    <legend>@Model.QuestionNumber</legend>
+    <table style="width: 100%" class="table table-condensed">
+        @foreach (var item in @Model.ListOfQuizOptions)
+       {
+           <tr>
+               <td>
+                  @Html.RadioButtonFor(expression:model => model.OptionId, @item.optionName) @item.optionName
+               </td>
+           </tr>
+           <tr>
+               <td>
+                   <input type="button" Value="Mext Question" name="Next" class="btn btn-primary"/>
+               </td>
+           </tr>
+       }
+    </table>
+</fieldset>

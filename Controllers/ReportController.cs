@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace TBHAcademy.Controllers
 {
@@ -87,11 +88,11 @@ namespace TBHAcademy.Controllers
         }
         public IActionResult Modules_Report()
         {
+
             IEnumerable<Modules> ModulesList = _db.Modules;
             ViewBag.date = DateTime.Now.ToString("dd-MMM-yyyy");
             return View(ModulesList);
         }
-
 
         public IActionResult Course_Info_Report()
         {
@@ -130,6 +131,39 @@ namespace TBHAcademy.Controllers
             return View();
         }
 
+        //public async Task<IActionResult> Users_Info_Report()
+        //{
+        //    //var users = await _userManager.Users.ToListAsync();
+        //    //var userRolesViewModel = new List<UserRolesViewModel>();
+        //    //foreach (TBHAcademyUser user in users)
+        //    //{
+        //    //    var thisViewModel = new UserRolesViewModel();
+        //    //    thisViewModel.UserId = user.Id;
+        //    //    thisViewModel.Email = user.Email;
+        //    //    thisViewModel.FirstName = user.FirstName;
+        //    //    thisViewModel.LastName = user.LastName;
+        //    //    thisViewModel.Roles = await GetUserRoles(user);
+        //    //    userRolesViewModel.Add(thisViewModel);
+        //    //}
+        //    //return View(userRolesViewModel);
+
+
+
+
+        //}
+
+        public IActionResult Users_Info_Report()
+        {
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.date = DateTime.Now.ToString("dd-MMMM-yyyy");
+            ViewBag.Users = from R in _db.Roles
+                              join UR in _db.UserRoles on R.Id equals UR.RoleId
+                              from U in _db.Users
+                              join ur in _db.UserRoles on U.Id equals ur.UserId
+                              where U.Id == UR.UserId
+                              select U;
+            return View();
+        }
 
     }
 }

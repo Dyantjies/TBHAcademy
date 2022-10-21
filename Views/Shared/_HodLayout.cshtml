@@ -92,47 +92,23 @@
             <ul class="nav-sidebar" style="color:white">
                 <li class="nav-item  ">
 
-                    <a href="@Url.Action("Dashboard","Hod")" id="Dashboard" class="button nav-link" style="color:white"><i data-feather="home" style="color:white"></i><span>Dashboard</span></a>
+                    <a href="" id="Dashboard" class="button nav-link" style="color:white"><i data-feather="home" style="color:white"></i><span>Dashboard</span></a>
                 </li>
                
                 <li class="nav-item">
 
-                    <a href="" class="nav-link with-sub" style="color:white"><i data-feather="grid" style="color:white"></i><span>Manage Faculties</span></a>
-                    <nav class="nav-sub">
-                        @try
-                        {
-                            @foreach (Faculties f in ViewBag.Faculties)
-                            {
-                                <div class="border text-center p-0">
-
-                                    <a asp-controller="Hod" asp-action="InsertFaculty" style="font-size: 15px"  class=" button btn btn-outlined-primary text-center btn-block btn-small" data-bs-toggle="tooltip" data-bs-placement="right">@f.Faculty.FacultyName</a>
-
-                                </div>
-
-                            }
-                        }
-                        catch
-                        {
-                            <p></p>
-
-                        }
-                        <hr class=" mt-1 mb-2">
-                        <div>
-                            <a asp-controller="Hod" asp-action="ListFaculty" class="button btn btn-primary text-center btn-block btn-small">Manage Faculties</a>
-                        </div>
-
-                    </nav>
+                    <a href="" id="Faculties" class="button nav-link" style="color:white"><i data-feather="grid" style="color:white"></i><span>Manage Faculties</span></a>
                 
                 </li>                
                
                 <li class="nav-item  ">
 
-                    <a href="@Url.Action("Calendar","Hod")" id="Calendar" class="button nav-link" style="color:white"><i data-feather="monitor" style="color:white"></i><span>Appointments</span></a>
+                    <a href="" id="Calendar" class="button nav-link" style="color:white"><i data-feather="monitor" style="color:white"></i><span>Appointments</span></a>
                 </li>
                
                 <li class="nav-item  ">
 
-                    <a href="@Url.Action("ListModules","Hod")" id="ListModules" class="button nav-link" style="color:white"><i data-feather="package" style="color:white"></i><span>Activities</span></a>
+                    <a href="" id="ListModules" class="button nav-link" style="color:white"><i data-feather="package" style="color:white"></i><span>Activities</span></a>
                 </li>
                
                 <li class="nav-item">
@@ -144,10 +120,7 @@
                     <nav class="nav-sub">
                             <a asp-controller="Reports" asp-action="Modules_Report" class="button btn btn-primary text-center btn-block btn-small">Modules Report</a>
                     </nav>
-                </li>               
-                @*<li class="nav-item">
-                    <a href="" style="color:white" class="button nav-link"><i class='bx bxs-conversation bx-flashing-hover bx-sm nav_icon'></i><span>Learning Update</span></a>
-                </li>*@
+                </li>
                 <li class="nav-item">
                     <a href="" id="CreateAnnouncement" style="color:white" class="button nav-link"><i data-feather="bell"></i><span>Announcements</span></a>
                 </li>
@@ -348,8 +321,13 @@
     });
 </script>
 <script type="text/javascript">
+    $('#Faculties').click(function () {
+        document.location = '@Url.Action("ListFaculty","Hod")';
+    });
+</script>
+<script type="text/javascript">
     $('#Calendar').click (function () {
-        document.location = '@Url.Action("Calendar","Hod")';
+        document.location = '@Url.Action("Index","Calendar")';
     });
 </script>
 <script type="text/javascript">

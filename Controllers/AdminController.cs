@@ -267,7 +267,7 @@ namespace TBHAcademy.Controllers
             }
 
         }
-     
+
         public IActionResult FAQs()
         {
 
@@ -315,7 +315,7 @@ namespace TBHAcademy.Controllers
             }
         }
 
-      
+
         public IActionResult DiplayFAQs()
         {
             IEnumerable<FAQ> DiplayFAQs = _db.fAQs;
@@ -324,13 +324,43 @@ namespace TBHAcademy.Controllers
         }
 
 
-
-
-
-        public IActionResult Calender()
+        [HttpGet]
+        public async Task<IActionResult> DeleteFAQ(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var schedule = await _db.fAQs.AsNoTracking().FirstOrDefaultAsync(s => s.FAQId == id);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+
+            return View(schedule);
         }
+
+        [HttpPost, ActionName("DeleteFAQ")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteFAQConfirm(int? id)
+        {
+            var fAQ = await _db.fAQs.FindAsync(id);
+            if (fAQ == null)
+            {
+                return RedirectToAction("ListFAQs", "Admin");
+            }
+            try
+            {
+                _db.fAQs.Remove(fAQ);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("ListFAQs", "Admin");
+            }
+            catch (DbUpdateException)
+            {
+                return RedirectToAction(nameof(DeleteFAQ));
+            }
+        }
+
     }
 }
            

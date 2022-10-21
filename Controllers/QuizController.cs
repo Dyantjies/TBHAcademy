@@ -12,6 +12,8 @@ using System.Security.Claims;
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Http;
+
 namespace TBHAcademy.Controllers
 {
     public class QuizController : Controller
@@ -20,6 +22,8 @@ namespace TBHAcademy.Controllers
         private readonly SignInManager<TBHAcademyUser> _signInManager;
         private readonly TBHAcademyContext _db;
         private readonly IEmailSender _emailSender;
+        public const string SessionAswer = "_Name";
+        public const string SessionQuiz = "_Name2";
 
         public QuizController(TBHAcademyContext db, IEmailSender emailSender)
         {
@@ -92,17 +96,20 @@ namespace TBHAcademy.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Attempt(Attempt attempt, int QuizID)
+        public IActionResult Attempt(int QuizID)
         {
+            Attempt attempt = new Attempt();
             var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //Attempt attempt = new Attempt();
             attempt.Date = DateTime.Now.ToString("dd/MMMM/yyyy");
             attempt.time = DateTime.Now.ToString("HH:mm:ss");
-            attempt.QuizID = 1;
+            attempt.QuizID = QuizID;
             attempt.StudentID = user;
             _db.Attempt.Add(attempt);
             _db.SaveChanges();
-            return View();
+           
+            HttpContext.Session.SetInt32(SessionQuiz, QuizID);
+            return View("Question");
         }
         public async Task<IActionResult> Quiz([Bind("QuizID,QDescription,DActive,Attempts,Time,IsActive,AssignedID")] Quiz quiz)
         {
@@ -114,7 +121,47 @@ namespace TBHAcademy.Controllers
             }
             return View(quiz);
         }
+        public ActionResult Question()
+        {
+            //ViewBag.QuizInfor = from Q in _db.Quiz
+            //                    where Q.QuizID == QuizId
+            //                    select Q;
+            return View();
+        }
+        public PartialViewResult UserQuestionAnswer()
+        {
+            int pageSize = 1;
+            int pageNumber = 0;
+            int Quiz = Convert.ToInt32(HttpContext.Session.GetInt32(SessionQuiz));
+            if (HttpContext.Session.GetString(SessionAswer).ToString() == null)
+            {
+                pageNumber = pageNumber + 1;
+            }
+            //else
+            //    //{
+            //    //    List<StudentAnswer> StuAnswer = HttpContext.Session.GetString(SessionAswer) as List<StudentAnswer>;
+            //    //}
+                List<Questions> listofQuestiom = new List<Questions>();
+             listofQuestiom = _db.Questions.Where(model => model.QuizID == 1).ToList();
 
+            QuizQuestionAnswerViewModel objAnswerViewModel = new QuizQuestionAnswerViewModel();
+            Questions objQuestion = new Questions();
+            objQuestion = listofQuestiom.Skip((pageNumber - 1) * pageSize).Take(pageSize).FirstOrDefault();
+
+            objAnswerViewModel.QuestionID = objQuestion.QId;
+            objAnswerViewModel.QuestionDes = objQuestion.QuesDes;
+            objAnswerViewModel.QuestionNumber = objQuestion.QNumber;
+            objAnswerViewModel.ListOfQuizOptions = (from obj in _db.QuestionOptions
+                                                    where obj.Qid == objQuestion.QId
+                                                    select new QuizOptions()
+                                                    {
+                                                        optionName = obj.OpName,
+                                                        OptionID = obj.OpID
+
+                                                    }).ToList();
+
+            return PartialView("QuizQuestionOption",objAnswerViewModel);
+        }
     }
 }
 

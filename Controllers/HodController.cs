@@ -252,6 +252,7 @@ namespace TBHAcademy.Controllers
 
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Assign(AssignModules assign)
@@ -269,10 +270,6 @@ namespace TBHAcademy.Controllers
             IEnumerable<AssignModules> AssignedList = _db.AssignModules;
             return View(AssignedList);
            
-        }
-        public IActionResult Calendar()
-        {
-            return View();
         }
 
         public IActionResult FAQ_Display()
