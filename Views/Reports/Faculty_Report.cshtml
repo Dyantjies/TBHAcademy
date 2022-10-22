@@ -50,7 +50,7 @@
             </thead>
             <tbody>
                 
-                @foreach (Faculties_Display E in ViewBag.Faculty_Display.Select(new {}))
+                @foreach (Faculties_Display E in ViewBag.Faculty_Display)
                 {
                     <tr>
                         <td>@E.Faculty.FacultyName</td>
