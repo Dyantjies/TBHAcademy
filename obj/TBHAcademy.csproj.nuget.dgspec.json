@@ -1,28 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj": {}
+    "C:\\Users\\koketso mosena\\OneDrive\\Documents\\Final Project\\TBHAcademy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj": {
+    "C:\\Users\\koketso mosena\\OneDrive\\Documents\\Final Project\\TBHAcademy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj",
+        "projectUniqueName": "C:\\Users\\koketso mosena\\OneDrive\\Documents\\Final Project\\TBHAcademy.csproj",
         "projectName": "TBHAcademy",
-        "projectPath": "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj",
-        "packagesPath": "C:\\Users\\koketso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\koketso\\Desktop\\Project\\obj\\",
+        "projectPath": "C:\\Users\\koketso mosena\\OneDrive\\Documents\\Final Project\\TBHAcademy.csproj",
+        "packagesPath": "C:\\Users\\koketso mosena\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\koketso mosena\\OneDrive\\Documents\\Final Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\koketso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\koketso mosena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
