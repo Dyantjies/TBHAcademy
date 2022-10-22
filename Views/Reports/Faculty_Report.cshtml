@@ -44,18 +44,18 @@
                 <tr>
                     <td>Faculty Name </td>
                     <td>Course Name </td>
-                    <td>Number Of Modules </td>
+                   
 
                 </tr>
             </thead>
             <tbody>
                 
-                @foreach (Faculties_Display E in ViewBag.Faculties)
+                @foreach (Faculties_Display E in ViewBag.Faculty_Display)
                 {
                     <tr>
                         <td>@E.Faculty.FacultyName</td>
                         <td>@E.Course.CourseName</td>
-                        <td>@ViewBag.Modules</td>
+                        
                     </tr>
                 }
                 

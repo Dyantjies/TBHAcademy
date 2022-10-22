@@ -28,8 +28,8 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model != null)
-            {
+           
+          
                 @foreach (var scheduleMeeting in Model)
                 {
                     <tr>
@@ -38,15 +38,22 @@
                         <td>
                             <a class="button btn btn-outline-info  w-100" href="@scheduleMeeting.Link">Join Meeting</a>
                         </td>
-                        <td>
-                            <a asp-action="UpdateMeeting" class="button btn btn-outline-info  w-100" asp-route-id="@scheduleMeeting.ScheduleMeetingID">Update</a>@* @faculty.FacultyId*@
-                        </td>
-                        <td>
-                            <a asp-action="Delete" class="button btn btn-outline-info  w-100" asp-route-id="@scheduleMeeting.ScheduleMeetingID">Delete</a>@* @faculty.FacultyId*@
-                        </td>
-                    </tr>
+                          <td>
+                            <div class="card-footer bg-white">
+                             <div class="text-primary center">
+                                <a asp-action="UpdateMeeting" class="btn btn-outline-primary mx-1" asp-route-id="@scheduleMeeting.ScheduleMeetingID">Update</a>
+                                  <a asp-action="Delete" class="btn btn-outline-primary mx-1" asp-route-id="@scheduleMeeting.ScheduleMeetingID">Delete</a>
+                        </div>
+                     </div>
+                  </td>
+
+
+
+                 </tr>
                 }
+             @if (Model != null)  {
             }
+
         </tbody>
     </table>
 </div>

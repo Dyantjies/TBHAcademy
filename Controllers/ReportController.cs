@@ -91,6 +91,9 @@ namespace TBHAcademy.Controllers
             ViewBag.Modules = _db.Modules.Count(x => x.ModuleId > 0);
             ViewBag.date = DateTime.Now.ToString("dd-MMM-yyyy");
             ViewBag.Faculties = _db.Faculty.OrderBy(x => x.FacultyName).ToList();
+            ViewBag.Faculty_Display = (from C in _db.Course
+                                       join f in _db.Faculty on C.FacultyId equals f.FacultyId
+                                       select new Faculties_Display { Faculty = f, Course = C }).ToList();
             ViewBag.Courses = _db.Course.OrderBy(x => x.CourseName).ToList();
             
             return View();
@@ -99,12 +102,11 @@ namespace TBHAcademy.Controllers
         {
             ViewBag.date = DateTime.Now.ToString("dd-MMM-yyyy");
 
-            ViewBag.FacultyOverview = (from E in _db.Enroll
-                                       join M in _db.Modules on E.ModuleID equals M.ModuleId
+            ViewBag.FacultyOverview = (from E in _db.Modules
+                                       join M in _db.Enroll on E.ModuleId equals M.ModuleID
                                        from C in _db.Course
                                        join f in _db.Faculty on C.FacultyId equals f.FacultyId
-                                       where C.FacultyId == f.FacultyId
-                                       select new Faculties_Display { Faculty = f, Course = C, Modules = M }).ToList();
+                                       select new Faculties_Display { Faculty = f, Course = C, Modules = E }).ToList();
             return View();
         }
         public IActionResult Modules_Report()

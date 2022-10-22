@@ -280,6 +280,7 @@ namespace TBHAcademy.Controllers
 
         public IActionResult FAQ_Display()
         {
+          IEnumerable<FAQ> FAQ_Display=_db.fAQs;
             return View();
         }
     }

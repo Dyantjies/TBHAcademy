@@ -64,9 +64,8 @@ namespace TBHAcademy.Controllers
                              where R.Name == "Student" && U.Id == UR.UserId
                              select U;
 
-            ViewBag.OverseeLearning = (from C in _db.Course
-                                       join F in _db.Faculty on C.FacultyId equals F.FacultyId
-                                       from MC in _db.Mark_Capture
+            
+            ViewBag.OverseeLearning = (from MC in _db.Mark_Capture
                                        join U in _db.Users on MC.StudentID equals U.Id
                                        from M in _db.Modules
                                        join E in _db.Enroll on M.ModuleId equals E.ModuleID
