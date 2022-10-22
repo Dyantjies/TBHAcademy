@@ -367,7 +367,7 @@
                     </nav>
                 </li>
                 <li class="button nav-item"><a id="Calender1" style="color:white" class="nav-link"><i data-feather="calendar" style="color:white"></i><span>Calendar</span></a></li>
-                <li class="button nav-item"><a id="CreateAssessment" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Create Assessment</span></a></li>
+                <li class="button nav-item"><a id="Announcement" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Create Announcement</span></a></li>
 
             </ul>
 
@@ -420,33 +420,11 @@
                     <ul class="navbar-nav flex-nowrap ms-auto">
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">@*<span class="badge bg-danger badge-counter">3+</span>*@<i class='bx bxs-bell bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" id="#Announcements">@*<span class="badge bg-danger badge-counter">3+</span>*@<i class='bx bxs-bell bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                     <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                        </div>
-                                        <div>
-                                            <span class="small text-gray-500">December 12, 2019</span>
-                                            <p>A new monthly report is ready to download!</p>
-                                        </div>
-                                    </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                                        </div>
-                                        <div>
-                                            <span class="small text-gray-500">December 7, 2019</span>
-                                            <p>$290.29 has been deposited into your account!</p>
-                                        </div>
-                                    </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                                        </div>
-                                        <div>
-                                            <span class="small text-gray-500">December 2, 2019</span>
-                                            <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                                        </div>
-                                    </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                        
+                                    </a><a class="dropdown-item text-center small text-gray-500" id="#Announcements">Show All Alerts</a>
                                 </div>
                             </div>
                         </li>
@@ -584,6 +562,12 @@
      $('#Meeting').click(function () {
             document.location = '@Url.Action("Create","Meeting")';
     });
+        $('#Announcements').click(function () {
+            document.location = '@Url.Action("Index","Announcements")';
+        });
+        $('#Announcement').click(function () {
+            document.location = '@Url.Action("CreateAnnouncement","Tutor")';
+        });
 
     //$('#Meeting').click(function () {
     //        document.location = '@Url.Action("Module","Content")';

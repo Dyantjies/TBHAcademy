@@ -128,7 +128,7 @@ namespace TBHAcademy.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateMark(Mark_Capture mark_Capture)
         {

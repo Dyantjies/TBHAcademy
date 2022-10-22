@@ -7265,3 +7265,5 @@ C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\refint\TBHAcademy.dll
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\TBHAcademy.pdb
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\TBHAcademy.genruntimeconfig.cache
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\ref\TBHAcademy.dll
+C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\CreateAnnouncement.cshtml.g.cs
+C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\Announcements.cshtml.g.cs
