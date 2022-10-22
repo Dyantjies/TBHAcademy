@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj": {}
+    "C:\\Users\\Owami\\source\\21-10 Final Final project\\TBHAcademy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj": {
+    "C:\\Users\\Owami\\source\\21-10 Final Final project\\TBHAcademy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj",
+        "projectUniqueName": "C:\\Users\\Owami\\source\\21-10 Final Final project\\TBHAcademy.csproj",
         "projectName": "TBHAcademy",
-        "projectPath": "C:\\Users\\koketso\\Desktop\\Project\\TBHAcademy.csproj",
-        "packagesPath": "C:\\Users\\koketso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\koketso\\Desktop\\Project\\obj\\",
+        "projectPath": "C:\\Users\\Owami\\source\\21-10 Final Final project\\TBHAcademy.csproj",
+        "packagesPath": "C:\\Users\\Owami\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owami\\source\\21-10 Final Final project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\koketso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Owami\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -213,33 +213,11 @@
                     <ul class="navbar-nav flex-nowrap ms-auto">
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">@*<span class="badge bg-danger badge-counter">3+</span>*@<i class='bx bxs-bell bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                    <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                        </div>
-                                     
-                                    </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                </div>
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" id="Announcement">@*<span class="badge bg-danger badge-counter">3+</span>*@<i class='bx bxs-bell bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
+                                
                             </div>
                         </li>
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <disxzv class="nav-item dropdown no-arrow">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button">@*<span class="badge bg-danger badge-counter">7</span>*@<i class='bx bxs-message bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                    <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image me-3">
-                                            <img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
-                                            <div class="bg-success status-indicator"></div>
-                                        </div>
-                                       
-                                       
-                                    </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                </div>
-                            </disxzv>
-                            <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
-                        </li>
+                      
                    
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow">
@@ -376,7 +354,12 @@
        
     });
 </script>
-
+<script type="text/javascript">
+    $('#Announcement').click(function () {
+        document.location = '@Url.Action("Index","Announcements")';
+       
+    });
+</script>
  <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function (event) {
 

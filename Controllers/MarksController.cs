@@ -137,6 +137,23 @@ namespace TBHAcademy.Controllers
             return RedirectToAction("ListMarks", "Marks");
         }
 
+        //----------------------------------------------------------
+        public IActionResult ListMarks1()
+        {
+            ViewBag.Message = "Marks Display";
+
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ViewBag.ProgressReport = (from AM in _db.AssignModules
+                                      join M in _db.Modules on AM.ModuleID equals M.ModuleId
+                                      from MC in _db.Mark_Capture
+                                      join U in _db.Users on MC.StudentID equals U.Id
+                                      where user == AM.TutorID && MC.ModuleID == M.ModuleId
+                                      select new Capture_Mark_Display { AssignModules = AM, TBHAcademyUser = U, Mark_Capture = MC, Modules = M }).Distinct().ToList();
+            return View();
+
+        }
+
 
 
 
