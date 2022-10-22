@@ -7248,7 +7248,6 @@ C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\Calen
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\CapturetMarklist.cshtml.g.cs
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\Dashboard.cshtml.g.cs
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\DeleteTermMark.cshtml.g.cs
-C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\DisplayFAQs.cshtml.g.cs
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\Index.cshtml.g.cs
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\InsertMark.cshtml.g.cs
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\TearmResultUpdate.cshtml.g.cs
@@ -7265,3 +7264,7 @@ C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\refint\TBHAcademy.dll
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\TBHAcademy.pdb
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\TBHAcademy.genruntimeconfig.cache
 C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\ref\TBHAcademy.dll
+C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\CreateAnnouncement.cshtml.g.cs
+C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\Announcements.cshtml.g.cs
+C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Marks\ListMarks1.cshtml.g.cs
+C:\Users\Ernest\3D Objects\Project 2022\obj\Debug\net5.0\Razor\Views\Tutor\DiplayFAQs.cshtml.g.cs

@@ -107,6 +107,27 @@ namespace TBHAcademy.Controllers
             return RedirectToAction("CapturetMarklist", "Tutor");
 
         }
+        public IActionResult CreateAnnouncement()
+        {
+            return View();
+        }
+        public IActionResult Announcements()
+        {
+            IEnumerable<Announcements> Announcements = _db.Announcements;
+            return View(Announcements);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateAnnouncement(Announcements announcements)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Announcements.Add(announcements);
+                _db.SaveChanges();
+                return RedirectToAction("Announcements");
+            }
+            return View(announcements);
+        }
 
         public IActionResult DiplayFAQs()
         {
