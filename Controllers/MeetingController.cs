@@ -40,6 +40,23 @@ namespace TBHAcademy.Controllers
         //}
         public IActionResult ListMeetings()
         {
+            if (User.IsInRole("Student"))
+            {
+                ViewBag.Layout = "_StudentLayout - Copy";
+            }
+            else if (User.IsInRole("Tutor"))
+            {
+                ViewBag.Layout = "_TutorLayoutcshtml";
+            }
+            else if (User.IsInRole("Head of Department"))
+            {
+                ViewBag.Layout = "_HodLayout";
+            }
+            else if (User.IsInRole("Administrator"))
+            {
+                ViewBag.Layout = "_AdminLayout";
+            }
+
             IEnumerable<ScheduleMeeting> meetings = _db.ScheduleMeeting;
             return View(meetings);
         }
@@ -60,7 +77,7 @@ namespace TBHAcademy.Controllers
             }
             else if (User.IsInRole("Tutor"))
             {
-                ViewBag.Layout = "_TutorLayoutcshtml.cshtml";
+                ViewBag.Layout = "_TutorLayoutcshtml";
             }
             else if (User.IsInRole("Head of Department"))
             {
@@ -103,20 +120,20 @@ namespace TBHAcademy.Controllers
                        where AS.ModuleID == schedule.ModuleID
                        select U).ToList();
                 
-                foreach (var obj in User)
-                {
-                    await _emailSender.SendEmailAsync(obj.Email, "Meeting Invitation",
-                    $"<h3>Hey"+user.FirstName+ user.LastName + "</h3> <br/><h5>You Have Been Inivited To A Meeting</h5><br/>Below is the Meeting Information <br/>Meeting Host: "+ user.FirstName + user.LastName + "<br/>" +
-                    "Meeting Title: "+schedule.Title+"<br/> Meeting Description: "+ schedule.Description+"<br/>Meeting Date: "+schedule.AppointmentDate+" <br/> Meeting Link: " + "<a href='schedule.Link'>join</a>.");
-                }
+                //foreach (var obj in User)
+                //{
+                //    await _emailSender.SendEmailAsync(obj.Email, "Meeting Invitation",
+                //    $"<h3>Hey"+user.FirstName+ user.LastName + "</h3> <br/><h5>You Have Been Inivited To A Meeting</h5><br/>Below is the Meeting Information <br/>Meeting Host: "+ user.FirstName + user.LastName + "<br/>" +
+                //    "Meeting Title: "+schedule.Title+"<br/> Meeting Description: "+ schedule.Description+"<br/>Meeting Date: "+schedule.AppointmentDate+" <br/> Meeting Link: " + "<a href='schedule.Link'>join</a>.");
+                //}
 
             }
             if(schedule.MemberId != "0")
             {
                 
-                await _emailSender.SendEmailAsync(user2.Email,"Meeting Invitation",
-                    $"<h3>Hey" + user.FirstName + user.LastName + "</h3> <br/><h5>You Have Been Inivited To A Meeting</h5><br/>Below is the Meeting Information <br/>Meeting Host: " + user.FirstName + user.LastName + "<br/>" +
-                    "Meeting Title: " + schedule.Title + "<br/> Meeting Description: " + schedule.Description + "<br/>Meeting Date: " + schedule.AppointmentDate + " <br/> Meeting Link: " + "<a href='schedule.Link'>join</a>.");
+                //await _emailSender.SendEmailAsync(user2.Email,"Meeting Invitation",
+                //    $"<h3>Hey" + user.FirstName + user.LastName + "</h3> <br/><h5>You Have Been Inivited To A Meeting</h5><br/>Below is the Meeting Information <br/>Meeting Host: " + user.FirstName + user.LastName + "<br/>" +
+                //    "Meeting Title: " + schedule.Title + "<br/> Meeting Description: " + schedule.Description + "<br/>Meeting Date: " + schedule.AppointmentDate + " <br/> Meeting Link: " + "<a href='schedule.Link'>join</a>.");
 
             }   
             

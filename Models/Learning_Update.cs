@@ -5,11 +5,9 @@ namespace TBHAcademy.Models
 {
     public class Learning_Update
     {
-        public Course Course { get; set; }
-        public Faculty  Faculty { get; set; }
-        public Mark_Capture Mark_Capture { get; set; }
         public TBHAcademyUser TBHAcademyUser { get; set; }
+        public AssignModules AssignModules { get; set; }
+        public Mark_Capture Mark_Capture { get; set; }
         public Modules Modules { get; set; }
-        public Enroll Enroll { get; set; }
     }
 }

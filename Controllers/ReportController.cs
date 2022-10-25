@@ -58,7 +58,8 @@ namespace TBHAcademy.Controllers
                                join U in _db.Users on E.StudentID equals U.Id
                                where A.AssignedID == E.ModuleID && E.StudentID == user
                                select new MyModules { AssignModulesVM = A, ModulesVM = m, EnrollVM = E }).ToList();
-            ViewBag.Message = "Enrolled Modules Report";
+
+             ViewBag.Message = "Enrolled Modules Report";
             
             ViewBag.date = DateTime.Now.ToString("dd-MMMM-yyyy");
             ViewBag.Enrolled = (from c in _db.Course
@@ -70,20 +71,42 @@ namespace TBHAcademy.Controllers
                                 where E.StudentID == user && AM.ModuleID == C.ModuleId && E.ModuleID == AM.AssignedID
                                 select new Enrolled_Module_Display { AssignModules = AM, Course = c, Enroll = E, Modules = C, TBHAcademyUser = U }).ToList();
 
-
             return View();
         }
+
+        //public IActionResult MeetingHistory()
+        //{
+        //    ViewBag.Message = "Meeting History";
+        //    ViewBag.DisplayMeeting = (from m in _db.ScheduleMeeting
+        //                       join U in _db.Users on m.StudentId equals U.Id
+        //                       where m.StudentId == U.Id
+        //                       select new MyMeeting { ScheduleMeetingVM = m, UserVM = U }
+        //           ).ToList();
+
+        //    return View();
+
+        //}
         public IActionResult Faculty_Report()
         {
             ViewBag.Modules = _db.Modules.Count(x => x.ModuleId > 0);
             ViewBag.date = DateTime.Now.ToString("dd-MMM-yyyy");
             ViewBag.Faculties = _db.Faculty.OrderBy(x => x.FacultyName).ToList();
+            ViewBag.Faculty_Display = (from C in _db.Course
+                                       join f in _db.Faculty on C.FacultyId equals f.FacultyId
+                                       select new Faculties_Display { Faculty = f, Course = C }).ToList();
             ViewBag.Courses = _db.Course.OrderBy(x => x.CourseName).ToList();
+            
+            return View();
+        }
+        public IActionResult Faculty_Update_Report()
+        {
+            ViewBag.date = DateTime.Now.ToString("dd-MMM-yyyy");
 
-            ViewBag.Faculties = (from f in _db.Faculty
-                                 join C in _db.Course on f.FacultyId equals C.CourseId
-                                 where C.FacultyId == f.FacultyId
-                                 select new Faculties_Display { Faculty = f, Course = C }).ToList();
+            ViewBag.FacultyOverview = (from E in _db.Modules
+                                       join M in _db.Enroll on E.ModuleId equals M.ModuleID
+                                       from C in _db.Course
+                                       join f in _db.Faculty on C.FacultyId equals f.FacultyId
+                                       select new Faculties_Display { Faculty = f, Course = C, Modules = E }).ToList();
             return View();
         }
         public IActionResult Modules_Report()

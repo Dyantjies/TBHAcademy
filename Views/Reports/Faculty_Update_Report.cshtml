@@ -1,0 +1,86 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TBHAcademy.Areas.Identity.Data
+@using TBHAcademy.Models
+
+@inject SignInManager<TBHAcademyUser> SignInManager
+@inject UserManager<TBHAcademyUser> UserManager
+@{
+    Layout = "_HodLayout";
+}
+
+<div class="container-fluid col-12">
+    <button id="Downloadbtn" class="btn btn-primary">Print</button>
+</div>
+<div id="Report" class="container-fluid ">
+    <div id="header12" class="container-fluid  row col-12">
+        <div id="headerID" class="container-fluid  col-6">
+            <img src="~/css/log2 (2).png" style="width:90px" class="m-0 p-0" />
+        </div>
+        <div id="HeaderDate" class="container-fluid col-6 m-0 p-0">
+            Date: @ViewBag.date <br />
+        </div>
+
+    </div>
+    <div id="StudentInfo" class="col-6 mt-2">
+        <h4>Head of Department</h4>
+        First Name: @UserManager.GetUserAsync(User).Result.FirstName <br />
+        Last  Name:  @UserManager.GetUserAsync(User).Result.LastName<br />
+    </div>
+    <h3 class="reportTitle"> Faculty Overview Report </h3>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Faculty Name </td>
+                    <td>Course Name </td>
+                    <td>Module Code</td>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Faculties_Display d in ViewBag.FacultyOverview)
+                {
+                    <tr>
+                        <td>@d.Faculty.FacultyName</td>
+                        <td>@d.Course.CourseName</td>
+                        <td>@d.Modules.ModuleCode</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+</div>
+
+<script defer>
+    window.onload = function() {
+        document.getElementById('StudentInfo').style.visibility = "hidden";
+        document.getElementById('header12').style.visibility = "hidden";
+        document.getElementById('Report').setAttribute("id", "report");
+
+    }
+    const DownloadBtn = document.getElementById('Downloadbtn');
+    DownloadBtn.addEventListener("click", myFunction);
+
+    function myFunction() {
+        document.getElementById('Downloadbtn').style.visibility = "hidden";
+        document.getElementById('btnUp').style.visibility = "hidden"
+        document.getElementById('header').style.visibility = "hidden";
+        document.getElementById('header12').style.visibility = "visible";
+        document.getElementById('report').setAttribute("id", "Report")
+        document.getElementById('StudentInfo').style.visibility = "visible";
+        window.print();
+        document.getElementById('StudentInfo').style.visibility = "hidden";
+        document.getElementById('header').style.visibility = "visible";
+        document.getElementById('btnUp').style.visibility = "visible"
+        document.getElementById('Downloadbtn').style.visibility = "visible";
+        document.getElementById('header12').style.visibility = "hidden";
+        document.getElementById('Report').setAttribute("id", "report");
+
+
+    }
+
+
+
+</script>

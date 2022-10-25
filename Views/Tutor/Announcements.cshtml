@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TBHAcademy.Models.Announcements>
+
+@{
+    ViewData["Title"] = "Announcements";
+    Layout = "~/Views/Shared/_TutorLayoutcshtml.cshtml";
+}
+
+<div class="w-100 mb-2  " style="background: rgba(6, 73, 181,0.5)">
+    <div class="pt-1 m-0 row">
+        <h5 class="text-white text-center ">Announcements</h5>
+    </div>
+</div>
+
+<table id="myTable" class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="CreateAnnouncement" class="btn btn-outline-info ml-1 mb-2">Add Announcement</a>
+</p>

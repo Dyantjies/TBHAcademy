@@ -8,9 +8,12 @@
     Layout = ViewBag.Layout;
 }
 
-<h1>Create</h1>
+<div class="w-100 " style="background: rgba(6, 73, 181,0.5)">
+    <div class="pt-1 m-0 row">
+        <h5 class="text-white text-center ">Create Meeting</h5>
+    </div>
+</div>
 
-<h4>ScheduleMeeting</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -97,7 +100,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="ListMeetings">Back to List</a>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

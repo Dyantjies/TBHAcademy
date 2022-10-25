@@ -25,7 +25,7 @@ namespace TBHAcademy.Controllers
             }
             else if (User.IsInRole("Tutor"))
             {
-                ViewBag.Layout = "~/Views/Shared/_TutorLayout.cshtml";
+                ViewBag.Layout = "_TutorLayoutcshtml";
             }
             else if (User.IsInRole("Administrator"))
             {

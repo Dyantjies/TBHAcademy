@@ -272,9 +272,9 @@
     <title>@ViewBag.Title</title>
     <link rel="icon" href="~/css/Log1 (2).png" type="image/x-icon" />
     @* <script src="../../Scripts/jquery-1.3.2.min.js" language="javascript" type="text/javascript" ></script>
-    <script src="../../Scripts/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>*@
+    <script src="../../Scripts/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
     @*<link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">*@
-    @*   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+ @*   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="~/assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="~/assets/fonts/ionicons.min.css">-
@@ -306,7 +306,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.4/b-2.2.2/fh-3.2.2/r-2.2.9/sb-1.3.1/sp-1.4.0/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="~/css/Student/Loader.css" />
     <script src="https://kit.fontawesome.com/2c4594405e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap" rel="stylesheet">
@@ -329,6 +331,7 @@
     <!-- perfect-scrollbar plugin -->
     <script src="~/Nav/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 </head>
+
 <body class="skin-base animate">
 
     <div class="sidebar ml-0 " style="background-color: #4723D9;color:white">
@@ -349,11 +352,13 @@
 
                 <li class="nav-item  ">
 
-                    <a href="#" id="Dashboard" class="button nav-link" style="color:white"><i data-feather="package" style="color:white"></i><span>Dashboard</span></a>
+                    <a  id="Dashboard" class="button nav-link" style="color:white"><i data-feather="package" style="color:white"></i><span>Dashboard</span></a>
                 </li>
 
-                <li class="nav-item" style="color:white"><a href="" style="color:white" class="nav-link"><i data-feather="edit-3" style="color:white"></i><span>Content</span></a></li>
-                <li class="nav-item" style="color:white"><a href="" style="color:white" class="nav-link"><i data-feather="monitor" style="color:white"></i><span>Schedule Meet</span></a></li>
+               @* --------------------------------Nav bar href----------------------------------------*@
+
+                <li class="button nav-item" style="color:white"><a id="Content" style="color:white" class="nav-link"><i data-feather="edit-3" style="color:white"></i><span>Content</span></a></li>
+                <li class="button nav-item" style="color:white"><a id="Meeting" style="color:white" class="nav-link"><i data-feather="monitor" style="color:white"></i><span>Schedule Meeting</span></a></li>
                 <li class="nav-item">
 
                     @*-------------------Add Marks-----------------------*@
@@ -364,39 +369,18 @@
                         <a class="button"  href=""  style="color:white">Team Mark</a>
                     </nav>
                 </li>
-                <li class="nav-item"><a href="" style="color:white" class="nav-link"><i data-feather="calendar" style="color:white"></i><span>Calendar</span></a></li>
-                <li class="nav-item"><a href="" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Create Assessment</span></a></li>
+                <li class="button nav-item"><a id="Calender1" style="color:white" class="nav-link"><i data-feather="calendar" style="color:white"></i><span>Calendar</span></a></li>
+                <li class="button nav-item"><a id="Announcement" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Create Announcement</span></a></li>
+                <li class="button nav-item"><a id="AddMark" style="color:white" class="nav-link"><i data-feather="briefcase" style="color:white"></i><span>Capture Mark</span></a></li>
 
             </ul>
-
- @*           <hr>
-
-            <ul class="nav-sidebar">
-                <li class="nav-item">
-                    <a href="" style="color:white" class="nav-link with-sub"><i data-feather="users" style="color:white"></i><span>Manage Accounts</span></a>
-                    <nav class="nav-sub">
-                        <a href="" class="sub-link" style="color:white">User Privacy</a>
-                        <a href="" class="sub-link" style="color:white">Subscriptions</a>
-                    </nav>
-                </li>
-                <li class="nav-item">
-                    <a href="" style="color:white" class="nav-link"><i data-feather="package" style="color:white"></i><span>Resources</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="" style="color:white" class="nav-link with-sub"><i data-feather="file-text" style="color:white"></i><span>Find Mates</span></a>
-                    <nav class="nav-sub">
-                        <a href="" class="sub-link" style="color:white">For My Modules</a>
-                        <a href="" class="sub-link" style="color:white">All Mates</a>
-                    </nav>
-                </li>
-            </ul>*@
 
             <hr>
 
             <nav class="nav-sidebar ">
-                <a href="" style="color:white" class="nav-link"><i data-feather="activity" style="color:white"></i><span style="color:white">Activity Logs</span></a>
-                <a href="" style="color:white" class="nav-link"><i data-feather="settings" style="color:white"></i><span>Preferences</span></a>
-                <a href="" style="color:white" class="nav-link"><i data-feather="help-circle" style="color:white"></i><span>Help &amp; Support</span></a>
+       @*         <a href="" style="color:white" class="nav-link"><i data-feather="activity" style="color:white"></i><span style="color:white">Activity Logs</span></a>
+                <a href="" style="color:white" class="nav-link"><i data-feather="settings" style="color:white"></i><span>Preferences</span></a>*@
+                <a href="" id = "FAQ" style="color:white" class="nav-link"><i data-feather="help-circle" style="color:white"></i><span>Help &amp; Support</span></a>
                
             </nav>
         </div><!-- sidebar-body -->
@@ -440,33 +424,11 @@
                     <ul class="navbar-nav flex-nowrap ms-auto">
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">@*<span class="badge bg-danger badge-counter">3+</span>*@<i class='bx bxs-bell bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" id="#Announcements">@*<span class="badge bg-danger badge-counter">3+</span>*@<i class='bx bxs-bell bx-tada-hover bx-sm' style="color:#4723D9 "></i></a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                     <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                        </div>
-                                        <div>
-                                            <span class="small text-gray-500">December 12, 2019</span>
-                                            <p>A new monthly report is ready to download!</p>
-                                        </div>
-                                    </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                                        </div>
-                                        <div>
-                                            <span class="small text-gray-500">December 7, 2019</span>
-                                            <p>$290.29 has been deposited into your account!</p>
-                                        </div>
-                                    </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="me-3">
-                                            <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                                        </div>
-                                        <div>
-                                            <span class="small text-gray-500">December 2, 2019</span>
-                                            <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                                        </div>
-                                    </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                        
+                                    </a><a class="dropdown-item text-center small text-gray-500" id="#Announcements">Show All Alerts</a>
                                 </div>
                             </div>
                         </li>
@@ -593,10 +555,39 @@
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
 <script type="text/javascript">
     $('#Dashboard').click(function () {
-        document.location = '@Url.Action("Student","Dashboard")';
+        document.location = '@Url.Action("Tutor","Dashboard")';
     });
+    $('#Content').click(function () {
+            document.location = '@Url.Action("Content","Module")';
+    });
+      $('#Calender1').click(function () {
+            document.location = '@Url.Action("Index","Calendar")';
+    });
+     $('#Meeting').click(function () {
+            document.location = '@Url.Action("Create","Meeting")';
+    });
+        $('#Announcements').click(function () {
+            document.location = '@Url.Action("Index","Announcements")';
+        });
+        $('#Announcement').click(function () {
+            document.location = '@Url.Action("CreateAnnouncement","Tutor")';
+        });
+
+           $('#AddMark').click(function () {
+            document.location = '@Url.Action("AddMark","Marks")';
+        });
+
+    //$('#Meeting').click(function () {
+    //        document.location = '@Url.Action("Module","Content")';
+    // });
 
 </script>
+<script type="text/javascript">
+    $('#FAQ').click(function () {
+        document.location = '@Url.Action("DiplayFAQs","Tutor")';
+    });
+</script>
+   
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/assets/js/chart.min.js"></script>
@@ -611,6 +602,24 @@
     <script src="~/js/Button1Loader.js" asp-append-version="true"></script>
     <script src="~/js/AncorLoader.js" asp-append-version="true"></script>
     <script id="bs-live-reload" data-sseport="50036" data-lastchange="1629819821869" src="/js/livereload.js"></script>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   
+   
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.4/b-2.2.2/fh-3.2.2/r-2.2.9/sb-1.3.1/sp-1.4.0/datatables.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -6,22 +6,15 @@
     ViewBag.Title = title.ToUpper();
 }
 
-
 <div class="w-100 " style="background: rgba(6, 73, 181,0.5)">
     <div class="pt-1 m-0 row">
-        <h5 class="text-white text-center ">EDIT FAQ</h5>
+        <h5 class="text-white text-center ">Edit FAQs</h5>
     </div>
 </div>
 
 <hr />
 
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="@Url.Action("ListFAQs","Admin")">List</a></li>
-    <li class="breadcrumb-item"> </li>
-    <li class="breadcrumb-item active" aria-current="page">Edit FAQs</li>
-  </ol>
-</nav>
+
 
 <div class="row">
     <div class="col-md-4">
@@ -34,11 +27,13 @@
                 <input asp-for="Questions" class="form-control" />
                 <span asp-validation-for="Questions" class="text-danger"></span>
             </div>
-            <div class="form-group" >
-                <label asp-for="Answer" class="control-label"></label>
-                <input asp-for="Answer" class="form-control" />
-                <span asp-validation-for="Answer" class="text-danger"></span>
-            </div>
+          
+
+            <div class="form-group">  
+                 <label asp-for="Answer" ></label>   
+                 <textarea class="form-control"  asp-for="Answer" rows="3"> </textarea>
+                  <span asp-validation-for="Answer" class="text-danger"></span>
+             </div>
             <div class="form-group">
                 <input type="submit" value="Update" class="btn btn-primary" />
             </div>

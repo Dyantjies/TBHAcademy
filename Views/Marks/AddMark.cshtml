@@ -1,0 +1,95 @@
+﻿@using TBHAcademy.Areas.Identity.Data;
+@model TBHAcademy.Models.Mark_Capture
+
+
+@{
+    ViewData["Title"] = "AddMark";
+    Layout = "~/Views/Shared/_TutorLayoutcshtml.cshtml";
+}
+
+<div class="w-100 " style="background: rgba(6, 73, 181,0.5)">
+    <div class="pt-1 m-0 row">
+        <h5 class="text-white text-center ">Cupture Mark</h5>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMark">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @* ---------Start of Drop down list------------*@
+            <div class="from-group">
+
+                <label class="text-black font-weight-bold" asp-for="StudentID"></label>
+
+                <div class="dropdown">
+                    <select asp-for="StudentID" class="form-control">
+                        @foreach (TBHAcademyUser U in ViewBag.Student)
+                        {
+                                <option value="@U.Id">@U.FirstName @U.LastName</option>
+                        }
+                    </select>
+                    @*<span asp-validation-for="StudentID" class="text-danger"></span>*@
+                </div>
+
+            </div>
+
+             <div>
+                <label class="text-black font-weight-bold" asp-for="ModuleID"></label>
+                <div class="dropdown">
+                    <select asp-for="ModuleID" class="form-control">
+                        @foreach (Modules p in ViewBag.Modules)
+                        {
+                                <option value="@p.ModuleId">@p.ModuleName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="ModuleID" class="text-danger"></span>
+                   
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Assessment" class="control-label"></label>
+                <input asp-for="Assessment" class="form-control" />
+                <span asp-validation-for="Assessment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Assessment_Type" class="control-label"></label>
+                <input asp-for="Assessment_Type" class="form-control" />
+                <span asp-validation-for="Assessment_Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfAssessment" class="control-label"></label>
+                <input asp-for="DateOfAssessment" class="form-control" />
+                <span asp-validation-for="DateOfAssessment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Overall_Mark" class="control-label"></label>
+                <input asp-for="Overall_Mark" class="form-control" />
+                <span asp-validation-for="Overall_Mark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mark_Obtained" class="control-label"></label>
+                <input asp-for="mark_Obtained" class="form-control" />
+                <span asp-validation-for="mark_Obtained" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mark_Percentage" class="control-label"></label>
+                <input asp-for="Mark_Percentage" class="form-control" />
+                <span asp-validation-for="Mark_Percentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListMarks">Back to List</a>
+</div>
+

@@ -35,14 +35,14 @@ namespace TBHAcademy.Controllers
                                where A.AssignedID == E.ModuleID && E.StudentID == user
                                select new MyModules { AssignModulesVM = A, ModulesVM = m, EnrollVM = E }).ToList();
             ViewBag.Message = "Progress Report";
-          
+
             ViewBag.ProgressReport = (from AM in _db.AssignModules
                                       join M in _db.Modules on AM.ModuleID equals M.ModuleId
                                       from MC in _db.Mark_Capture
                                       join U in _db.Users on MC.StudentID equals U.Id
                                       where MC.StudentID == user && MC.ModuleID == AM.AssignedID
                                       select new Capture_Mark_Display { AssignModules = AM, TBHAcademyUser = U, Mark_Capture = MC, Modules = M }).ToList();
-
+            
 
 
             return View();
@@ -64,9 +64,8 @@ namespace TBHAcademy.Controllers
                              where R.Name == "Student" && U.Id == UR.UserId
                              select U;
 
-            ViewBag.OverseeLearning = (from C in _db.Course
-                                       join F in _db.Faculty on C.FacultyId equals F.FacultyId
-                                       from MC in _db.Mark_Capture
+            
+            ViewBag.OverseeLearning = (from MC in _db.Mark_Capture
                                        join U in _db.Users on MC.StudentID equals U.Id
                                        from M in _db.Modules
                                        join E in _db.Enroll on M.ModuleId equals E.ModuleID
@@ -93,6 +92,27 @@ namespace TBHAcademy.Controllers
             IEnumerable<Course> CourseList = _db.Course;
             return View(CourseList);
 
+        }
+        public IActionResult Tutor()
+        {
+
+            ViewBag.Message = "Meeting History";
+            ViewBag.DisplayMeeting = (from m in _db.ScheduleMeeting
+                                      join U in _db.Users on m.MemberId equals U.Id
+                                      where m.MemberId == U.Id
+                                      select new MyMeeting { ScheduleMeetingVM = m, UserVM = U }
+                   ).ToList();
+
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ViewBag.ProgressReport = (from AM in _db.AssignModules
+                                      join M in _db.Modules on AM.ModuleID equals M.ModuleId
+                                      from MC in _db.Mark_Capture
+                                      join U in _db.Users on MC.StudentID equals U.Id
+                                      where user == AM.TutorID && MC.ModuleID == M.ModuleId && MC.Mark_Percentage >74
+                                      select new Capture_Mark_Display { AssignModules = AM, TBHAcademyUser = U, Mark_Capture = MC, Modules = M }).Distinct().ToList();
+
+            return View();
         }
     }
 }

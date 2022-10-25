@@ -34,7 +34,7 @@ namespace TBHAcademy.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Announcements = _db.Announcements.Count(x => x.AnnouncementId > 0);
+           
             return View();
         }
         public IActionResult InsertModule()
@@ -131,23 +131,29 @@ namespace TBHAcademy.Controllers
             return View(modules);
 
         }
-        [HttpPost]
-        public async Task<IActionResult> DeleteFaculty(int? id)
+        public IActionResult DeleteFaculty(int? id)
         {
-            if (id == null)
+            if (id == null || id == 0)
+            {
                 return NotFound();
-            var faculty = await _db.Faculty.FirstOrDefaultAsync(s => s.FacultyId == id);
-            if (faculty.Status == (int)CourseStatus.Inactive)
-            {
-                //_notyf.Warning("This course is already Inactive");
             }
-            else
+
+            var obj = _db.Faculty.Find(id);
+            if (obj == null)
             {
-                faculty.Status = (int)CourseStatus.Inactive;
-                //_notyf.Success("Course Deactivated");
-                await _db.SaveChangesAsync();
+                return NotFound();
             }
-            return RedirectToAction(nameof(ListFaculty));
+
+            return View(obj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteFaculty(Faculty faculty)
+        {
+            ViewBag.Message = faculty.FacultyName + "Will be Deleted!";
+            _db.Faculty.Remove(faculty);
+            _db.SaveChanges();
+            return RedirectToAction("ListFaculty", "Hod");
         }
         
         
@@ -274,6 +280,7 @@ namespace TBHAcademy.Controllers
 
         public IActionResult FAQ_Display()
         {
+          IEnumerable<FAQ> FAQ_Display=_db.fAQs;
             return View();
         }
     }

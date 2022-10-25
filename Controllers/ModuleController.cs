@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using TBHAcademy.Areas.Identity;
 using TBHAcademy.Data;
 using TBHAcademy.Models;
@@ -44,9 +45,7 @@ namespace TBHAcademy.Controllers
             HttpContext.Session.SetInt32(SessionModule, ID);
             ViewBag.Tittle = "Module Content";
             IEnumerable<Content> content = _db.Content;
-            ViewBag.Content = from C in _db.Content
-                              where C.AssignId == ID
-                              select C;
+
 
             //int module = ID;
 
@@ -55,10 +54,17 @@ namespace TBHAcademy.Controllers
 
             if (User.IsInRole("Student"))
             {
+                ViewBag.Content = from C in _db.Content
+                                  where C.AssignId == ID
+                                  select C;
                 ViewBag.Layout = "_StudentLayout - Copy";
             }
             else if (User.IsInRole("Tutor"))
             {
+                
+                ViewBag.Content = from C in _db.Content
+                                  where C.AssignId == 1
+                                  select C;
                 ViewBag.Layout = "~/Views/Shared/_TutorLayoutcshtml.cshtml";
             }
             else

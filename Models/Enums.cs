@@ -14,4 +14,12 @@ namespace TBHAcademy.Models
         [Description("Inactive")]
         Inactive = 1,
     }
+
+    public enum UserStatus
+    {
+        [Description("Active")]
+        Active = 0,
+        [Description("Inactive")]
+        Inactive = 1,
+    }
 }

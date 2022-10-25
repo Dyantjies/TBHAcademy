@@ -23,8 +23,6 @@ namespace TBHAcademy.Models
         [Required]
         [Display(Name = "Meet link")]
         public string Link { get; set; }
-
-
         
         [Display(Name = "Select Individual Member")]
         public string MemberId { get; set; }
@@ -33,5 +31,6 @@ namespace TBHAcademy.Models
         [Display(Name = "Meeting Hoster")]
         public string CreatorID { get; set; }
         public virtual TBHAcademyUser TBHAcademyUser { get; set; }
+
     }
 }

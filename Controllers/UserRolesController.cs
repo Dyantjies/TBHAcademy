@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TBHAcademy.Areas.Identity.Data;
+using TBHAcademy.Data;
 using TBHAcademy.Models;
 
 namespace TBHAcademy.Controllers
@@ -13,10 +15,15 @@ namespace TBHAcademy.Controllers
     {
         private readonly UserManager<TBHAcademyUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public UserRolesController(UserManager<TBHAcademyUser> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly TBHAcademyContext _db;
+        private readonly INotyfService _notyf;
+
+        public UserRolesController(TBHAcademyContext db, INotyfService not,UserManager<TBHAcademyUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _db = db;
+            _notyf = not;
         }
         public async Task<IActionResult> UserRoleIndex()
         {
@@ -29,6 +36,7 @@ namespace TBHAcademy.Controllers
                 thisViewModel.Email = user.Email;
                 thisViewModel.FirstName = user.FirstName;
                 thisViewModel.LastName = user.LastName;
+                thisViewModel.Status = user.Status;
                 thisViewModel.Roles = await GetUserRoles(user);
                 userRolesViewModel.Add(thisViewModel);
             }
@@ -91,6 +99,48 @@ namespace TBHAcademy.Controllers
                 return View(model);
             }
             return RedirectToAction("UserRoleIndex");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            if (id == null)
+                return NotFound();
+            var user = await _db.Users.FirstOrDefaultAsync(s => s.Id == id);
+            if (user.Status == (int)UserStatus.Inactive)
+            {
+                _notyf.Warning("This user is already Inactive");
+            }
+            else
+            {
+                user.Status = (int)UserStatus.Inactive;
+                _notyf.Success("User Deactivated");
+                await _db.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(UserRoleIndex));
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ActivateUser(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+
+            var user = await _db.Users.FirstOrDefaultAsync(s => s.Id == id);
+            if (user.Status == (int)UserStatus.Active)
+            {
+                _notyf.Warning("User already active");
+            }
+            else
+            {
+                user.Status = (int)UserStatus.Active;
+                _notyf.Success("User Activated");
+                await _db.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(UserRoleIndex));
         }
     }
 }

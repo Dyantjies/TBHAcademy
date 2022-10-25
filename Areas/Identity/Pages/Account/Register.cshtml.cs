@@ -108,7 +108,7 @@ namespace TBHAcademy.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new TBHAcademyUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, DOB = Input.DOB, Gender = Input.Gender, Role = "Student", Status = "Active", date = DateTime.Today };
+                var user = new TBHAcademyUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, DOB = Input.DOB, Gender = Input.Gender, Role = "Student", Status = 0, date = DateTime.Today };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

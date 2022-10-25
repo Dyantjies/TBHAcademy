@@ -30,7 +30,7 @@ namespace TBHAcademy.Areas.Identity.Data
         public string Gender { get; set; }
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
-        public string Status { get; set; }
+        public int Status { get; set; }
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string Role { get; set; }

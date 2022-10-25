@@ -19,6 +19,7 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Roles</th>
+             <th style="width:20px !important;">Status</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -30,8 +31,22 @@
             <td>@user.LastName</td>
             <td>@user.Email</td>
             <td>@string.Join(" , ", user.Roles.ToList())</td>
+             @if (user.Status == (int)UserStatus.Inactive)
+                            {
+                                <td>Deactivated</td>
+                            }
+                            else if (user.Status == (int)UserStatus.Active)
+                            {
+                                <td>Active</td>
+                            }
             <td>
                 <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Manage Roles</a>
+                <form asp-action="ActivateUser" method="post" asp-route-id="@user.UserId" class="d-inline ">
+                                    <button type="submit" class="btn btn-success">Activate</button>
+                                </form>
+                                <form asp-action="DeleteUser" method="post" asp-route-id="@user.UserId" class="d-inline w-50" id="_@user.UserId">
+                                    <button type="submit" class="btn btn-danger " id="DeleteBtn" onclick="Confirmation(this,@user.UserId)">Deactivate</button>
+                                </form>
             </td>
             <td> 
         <a class="button nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/ForgotPassword">Reset Password link</a>
@@ -40,4 +55,31 @@
         }
     </tbody>
 </table>
+
+<script type="text/javascript">
+    function Confirmation(event, UserId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to deactivate this User ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm',
+            preConfirm: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Success!',
+                    'User Deactivated',
+                    'success'
+                ).then(result => {
+                    document.querySelector(`#_${UserId}`).submit();
+                })
+            }
+        })
+    }
+</script>
+
+
 

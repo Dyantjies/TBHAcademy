@@ -8,6 +8,7 @@ namespace TBHAcademy.Models
         public virtual Faculty Faculty { get; set; }
         public Course Course { get; set; }
         public Modules Modules { get; set; }
+        public Enroll Enroll { get; set; }
 
     }
 }
